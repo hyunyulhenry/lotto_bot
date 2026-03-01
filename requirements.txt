@@ -1,5 +1,4 @@
 selenium
-pandas
-requests
+slack-sdk
 python-dotenv
-tabulate
+typing_extensions
