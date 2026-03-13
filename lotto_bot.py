@@ -14,7 +14,6 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # ==================== 설정 ====================
-DISCORD_WEBHOOK_URL = os.getenv('DISCORD_WEBHOOK_URL')
 DISCORD_BOT_TOKEN = os.getenv('DISCORD_BOT_TOKEN')
 DISCORD_CHANNEL_ID = os.getenv('DISCORD_CHANNEL_ID')
 BOT_HEADERS = {
@@ -33,13 +32,15 @@ LOTTO_BUY_URL = 'https://el.dhlottery.co.kr/game/TotalGame.jsp?LottoId=LO40'
 
 # ==================== 디스코드 ====================
 def discord_send(text):
-    """웹훅으로 메시지 전송, message_id 반환"""
-    res = requests.post(f'{DISCORD_WEBHOOK_URL}?wait=true', json={'content': text})
+    """봇 토큰으로 메시지 전송, message_id 반환"""
+    url = f'https://discord.com/api/v10/channels/{DISCORD_CHANNEL_ID}/messages'
+    res = requests.post(url, headers=BOT_HEADERS, json={'content': text})
     return res.json() if res.status_code == 200 else {}
 
 def discord_update(message_id, text):
-    """웹훅으로 메시지 수정"""
-    requests.patch(f'{DISCORD_WEBHOOK_URL}/messages/{message_id}', json={'content': text})
+    """봇 토큰으로 메시지 수정"""
+    url = f'https://discord.com/api/v10/channels/{DISCORD_CHANNEL_ID}/messages/{message_id}'
+    requests.patch(url, headers=BOT_HEADERS, json={'content': text})
 
 def discord_create_thread(message_id, name):
     """메시지에 스레드 생성, thread_id 반환"""

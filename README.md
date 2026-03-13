@@ -1,12 +1,12 @@
 # 🎰 Lotto Bot
 
-동행복권 자동 구매 및 Slack 알림 봇
+동행복권 자동 구매 및 Discord 알림 봇
 
 ## 기능
 - 매주 자동으로 로또 5게임 구매 (자동번호)
-- 구매 내역 조회 및 Slack 스레드 알림
+- 구매 내역 조회 및 Discord 스레드 알림
 - 잔액 확인 및 부족 시 경고
-- 구매 성공/실패 여부 Slack 메시지 업데이트
+- 구매 성공/실패 여부 Discord 메시지 업데이트
 
 ---
 
@@ -22,8 +22,8 @@ pip install -r requirements.txt
 `lotto_bot` 폴더 안에 `.env` 파일을 새로 만들고 아래 내용 입력
 
 ```
-SLACK_TOKEN=여기에_슬랙_토큰
-SLACK_CHANNEL=여기에_채널_ID
+DISCORD_BOT_TOKEN=여기에_디스코드_봇_토큰
+DISCORD_CHANNEL_ID=여기에_채널_ID
 USER_ID=여기에_동행복권_아이디
 PASSWORD="여기에_동행복권_비밀번호"
 ```
@@ -37,7 +37,7 @@ python lotto_bot.py
 
 ---
 
-## Slack 알림 예시
+## Discord 알림 예시
 
 ```
 ⏳ 2026-02-18 로또 구매를 시작합니다.   ← 진행 중
@@ -45,7 +45,7 @@ python lotto_bot.py
 ❌ 2026-02-18 로또 구매를 실패했습니다. (구매한도 초과) ← 실패
 ```
 
-스레드 댓글로 구매내역, 잔액, 구매완료 메시지가 달립니다.
+스레드로 구매내역, 잔액, 구매완료 메시지가 달립니다.
 
 ---
 
