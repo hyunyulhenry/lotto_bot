@@ -14,5 +14,6 @@ venv/
 .vscode/
 .idea/
 
-# 로그
+# Temp & Log
+*.tmp.*
 *.log
